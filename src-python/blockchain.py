@@ -1,5 +1,7 @@
 import hashlib
 import json
+
+from uuid import uuid4
 from time import time
 
 class BlockChain(object):
@@ -47,6 +49,37 @@ class BlockChain(object):
         })
 
         return self.last_block['index'] + 1
+
+    def proof_of_work(self, last_proof):
+        """
+        Simple proof of work algorithm:
+        - find a number p' such that hash(pp') contains leading 4 zeroes,
+        where p is the previous p'
+        - p is the previous proof, and p' is the new proof
+        :param last_proof: <int>
+        :return: <int>
+        """
+
+        proof = 0
+        while self.valid_proof(last_proof, proof) is False:
+            proof += 1
+
+        return proof
+
+    @staticmethod
+    def valid_proof(last_proof, proof):
+        """
+        Validates the proof: does hash(last_proof, proof) contains 4 leading zeroes?
+
+        :param last_proof: <int> previous proof
+        :param proof: <int> current proof
+        :return: <bool> True if correct, False if not
+        """
+
+        guess = f'{last_proof}{proof}'.encode()
+        guess_hash = hashlib.sha256(guess).hexdigest()
+        return guess_hash[:4] == '0000'
+
 
     @staticmethod
     def hash(block):
