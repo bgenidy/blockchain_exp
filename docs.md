@@ -10,4 +10,6 @@ By working on the premise of controlled and confidential nodes, it can leverage
 trusted execution environments (TEEs) such as Intels SGX, to provide a distributed ledger
 that provides throughput and latency approaching database speeds.
 - <https://hackernoon.com/learn-blockchains-by-building-one-117428612f46>
-Learning about the blockchain by building one in python and flask.
+Learning about the blockchain by building one in python and flask. Another developer
+also implemented a similar implementation using golang that can be found
+[here](https://github.com/crisadamo/gochain).
