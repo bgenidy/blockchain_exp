@@ -1,4 +1,4 @@
-# Simple Blockchain Python Edition
+# Blockchain Python Edition
 
 ### About Project
 The following directory contains the blockchain implementation that was
