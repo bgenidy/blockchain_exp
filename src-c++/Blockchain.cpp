@@ -50,7 +50,20 @@ bool Blockchain::validChain(json chain) {
 }
 
 bool Blockchain::resolveConflicts() {
-    // TODO
+    json neighbours = nodes;
+    json new_chain;
+
+    long max_length = chain.size();
+
+    for(auto& node: neighbours) {
+        // TODO make web requests to the neighbouring nodes to compare chains
+    }
+
+    if (!new_chain.empty()) {
+        chain = new_chain;
+        return true;
+    }
+
     return false;
 }
 
