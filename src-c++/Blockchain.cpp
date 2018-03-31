@@ -2,6 +2,7 @@
 #include <iostream>
 #include <ctime>
 #include "Blockchain.hpp"
+#include "picosha2.h"
 
 Blockchain::Blockchain() {
     current_transactions = json::array();
@@ -76,11 +77,11 @@ int Blockchain::proofOfWork(json last_block) {
 }
 
 string Blockchain::hash(json block) {
-    // TODO
-    return "";
+    return picosha2::hash256_hex_string(block.dump());
 }
 
 bool Blockchain::validProof(int lastProof, int proof, string lastHash) {
-    // TODO
-    return false;
+    string guess = std::to_string(lastProof) + "" + std::to_string(proof) + "" + lastHash;
+    string guess_hash = picosha2::hash256_hex_string(guess);
+    return guess_hash.substr(0,4) == "0000";;
 }
