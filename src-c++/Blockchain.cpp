@@ -25,8 +25,28 @@ void Blockchain::registerNode(string address) {
 }
 
 bool Blockchain::validChain(json chain) {
-    // TODO
-    return false;
+    json last_block = chain[0];
+    int current_index = 1;
+
+    while (current_index < chain.size()) {
+        json block = chain[current_index];
+        cout << last_block.dump() << endl;
+        cout << block.dump() << endl;
+        cout << "\n--------------\n" << endl;
+
+        if (block["previous_hash"] != hash(last_block)) {
+            return false;
+        }
+
+        if (!validProof(last_block["proof"], block["proof"], last_block["previous_hash"])) {
+            return false;
+        }
+
+        last_block = block;
+        current_index++;
+    }
+
+    return true;
 }
 
 bool Blockchain::resolveConflicts() {
