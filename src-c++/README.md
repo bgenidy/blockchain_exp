@@ -15,4 +15,15 @@ the latest release of his library [here](https://github.com/nlohmann/json/releas
 [sha256 hash](https://github.com/okdshin/PicoSHA2) developed by [okdshin](https://github.com/okdshin).
 For convenience his sha256 implementation has been ported directly in this project under `picosha2.h`.
 
+[web requests](https://github.com/whoshuu/cpr) developed by [whoshuu](https://github.com/whoshuu).
+This project uses a fork of his library that can be found under `cpr/`.
+
+### How to run
+
+libssl is need to make web requests. 
+On ubuntu systems it can be installed using the following command:
+```bash
+sudo apt-get install libssl-dev 
+```
+
 **Implementation/Documentation coming soon!**
