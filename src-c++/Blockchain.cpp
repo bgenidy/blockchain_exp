@@ -1,6 +1,9 @@
 
 #include <iostream>
 #include <ctime>
+
+#include <cpr/cpr.h>
+
 #include "Blockchain.hpp"
 #include "picosha2.h"
 
@@ -56,7 +59,17 @@ bool Blockchain::resolveConflicts() {
     long max_length = chain.size();
 
     for(auto& node: neighbours) {
-        // TODO make web requests to the neighbouring nodes to compare chains
+        auto r = cpr::Get(cpr::Url{node.dump()});
+        if (r.status_code == 200) {
+            json resp = json::parse(r.text);
+            long len = resp["length"];
+            json node_chain = resp["chain"];
+
+            if (len > max_length && validChain(node_chain)) {
+                max_length = len;
+                new_chain = node_chain;
+            }
+        }
     }
 
     if (!new_chain.empty()) {
