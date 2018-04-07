@@ -4,7 +4,14 @@
 #include "crow_all.h"
 
 int main() {
-    std::cout << "Hello Blockchain" << std::endl;
-    // TODO
+    // TODO implement blockchain endpoints
+    crow::SimpleApp app;
+
+    CROW_ROUTE(app, "/mine")([](){
+        return "Hello Blockchain";
+    });
+
+    app.port(18080).multithreaded().run();
+
     return 0;
 }
