@@ -4,8 +4,7 @@
 C++ implementation of a blockchain.
 
 ### How to run
-
-**Prereqs**
+#### Prereqs
 
 libssl is required by `cpr` library.
 
@@ -33,4 +32,4 @@ sudo apt-get install build-essential libtcmalloc-minimal4 && sudo ln -s /usr/lib
 [json](https://github.com/nlohmann/json) - json library<br>
 [PicoSHA2](https://github.com/okdshin/PicoSHA2) - sha256 library<br>
 [cpr](https://github.com/whoshuu/cpr) - web requests library (similar to python requests)<br>
-[crow](https://github.com/ipkn/crow) - web framework (similar to flask)
+[crow](https://github.com/ipkn/crow) - web framework (similar to python flask)
