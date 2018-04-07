@@ -1,6 +1,9 @@
 
 #include <iostream>
 #include <ctime>
+
+#include <cpr/cpr.h>
+
 #include "Blockchain.hpp"
 #include "picosha2.h"
 
