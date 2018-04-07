@@ -6,6 +6,6 @@ set(CMAKE_CXX_STANDARD 11)
 add_subdirectory(cpr)
 include_directories(${CPR_INCLUDE_DIRS})
 
-add_executable(src_c__ main.cpp Blockchain.cpp Blockchain.hpp json.hpp picosha2.h)
+add_executable(src_c__ main.cpp Blockchain.cpp Blockchain.hpp json.hpp picosha2.h crow_all.h)
 
-target_link_libraries(src_c__ ${CPR_LIBRARIES})
+target_link_libraries(src_c__ ${CPR_LIBRARIES} -lboost_system)
