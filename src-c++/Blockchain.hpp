@@ -23,6 +23,9 @@ public:
     json lastBlock();
     int proofOfWork(json lastBlock);
 
+    // getters
+    json getChain();
+    json getNodes();
 
     static string hash(json block);
     static bool validProof(int lastProof, int proof, string lastHash);

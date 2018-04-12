@@ -122,6 +122,14 @@ int Blockchain::proofOfWork(json last_block) {
     return proof;
 }
 
+json Blockchain::getChain() {
+    return chain;
+}
+
+json Blockchain::getNodes() {
+    return nodes;
+}
+
 string Blockchain::hash(json block) {
     return picosha2::hash256_hex_string(block.dump());
 }
