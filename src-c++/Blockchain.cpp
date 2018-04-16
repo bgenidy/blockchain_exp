@@ -15,8 +15,13 @@ Blockchain::Blockchain() {
     newBlock(1, "100");
 }
 
+/**
+ * @param address expects a well formated address i.e http://myblockchain.com:5000, https://myblockchain.com:5000
+ */
 void Blockchain::registerNode(string address) {
-    // TODO validate that address is a properly formatted address
+    if (!isValidAddress(address)) {
+        return;
+    }
 
     for (auto& element: nodes) {
         if (element == address) {
@@ -59,7 +64,7 @@ bool Blockchain::resolveConflicts() {
     long max_length = chain.size();
 
     for(auto& node: neighbours) {
-        auto r = cpr::Get(cpr::Url{node.dump()});
+        auto r = cpr::Get(cpr::Url{node.dump() + "/chain"});
         if (r.status_code == 200) {
             json resp = json::parse(r.text);
             long len = resp["length"];
@@ -128,6 +133,15 @@ json Blockchain::getChain() {
 
 json Blockchain::getNodes() {
     return nodes;
+}
+
+bool Blockchain::isValidAddress(string address) {
+    auto r = cpr::Get(cpr::Url{address + "/chain"});
+    if (r.status_code == 200) {
+        return true;
+    }
+
+    return false;
 }
 
 string Blockchain::hash(json block) {

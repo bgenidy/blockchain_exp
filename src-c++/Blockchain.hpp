@@ -27,6 +27,7 @@ public:
     json getChain();
     json getNodes();
 
+    static bool isValidAddress(string address);
     static string hash(json block);
     static bool validProof(int lastProof, int proof, string lastHash);
 };

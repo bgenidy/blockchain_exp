@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.9)
-project(src_c__)
+project(blockchain_exp)
 
 set(CMAKE_CXX_STANDARD 11)
 
 add_subdirectory(cpr)
 include_directories(${CPR_INCLUDE_DIRS})
 
-add_executable(src_c__ main.cpp Blockchain.cpp Blockchain.hpp json.hpp picosha2.h crow_all.h)
+add_executable(blockchain_exp main.cpp Blockchain.cpp Blockchain.hpp json.hpp picosha2.h crow_all.h)
 
-target_link_libraries(src_c__ ${CPR_LIBRARIES} -lboost_system)
+target_link_libraries(blockchain_exp ${CPR_LIBRARIES} -lboost_system)
