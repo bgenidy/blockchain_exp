@@ -18,3 +18,9 @@ also implemented a similar implementation using golang that can be found
 Locally deploy your own ethereum. To learn about
 [Ethereum](https://www.ethereum.org/) click
 [here](https://blockgeeks.com/guides/ethereum/).
+- <https://getacryp.com/proof-blockchain-consensus-protocols/> Provides a brief
+description of different types of proofs used in blockchain technologies.
+- <https://blockgeeks.com/guides/proof-of-work-vs-proof-of-stake/>
+Proof-of-Work vs Proof-of-Stake.
+- <https://medium.com/@mycoralhealth/code-your-own-proof-of-stake-blockchain-in-go-610cd99aa658> simple proof-of-stake
+blockchain implemented in GO.
